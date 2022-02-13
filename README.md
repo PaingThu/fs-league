@@ -1,1 +1,1 @@
-# fs-league
+# funabori-superleague
