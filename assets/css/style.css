@@ -1,0 +1,44 @@
+.header {
+  background: #d701f9;
+}
+
+.header .navbar a {
+  color: white;
+}
+
+.home .banner {
+  background-image: url(/assets/img/banner.jpg?20220212-001);
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 626px;
+}
+
+.home .banner .banner-text {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%) !important;
+          transform: translateX(-50%) translateY(-50%) !important;
+  color: white;
+  text-align: center;
+}
+
+.home .banner .banner-text img {
+  width: 300px;
+}
+
+.home .video-section .tab .nav .nav-item .nav-link {
+  cursor: pointer;
+}
+
+.home .video-section .tab .nav .nav-item .nav-link img {
+  width: 35px;
+}
+
+.home .video-section .youtube .video > iframe {
+  display: block;
+  margin: auto;
+  max-width: 100%;
+  height: 169px;
+}
+/*# sourceMappingURL=style.css.map */
