@@ -37,6 +37,17 @@
                     max-width: 100%;
                     height: 169px;
                 }
+                .no-video {
+                    display: flex;
+                    height: 169px;
+                    border: 1px solid #ccc;
+                    span{
+                        display: block;
+                        width: 100%;
+                        align-self: center;
+                        text-align: center;
+                    }
+                }
             }
         }
     }

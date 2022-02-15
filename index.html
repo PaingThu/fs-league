@@ -33,52 +33,31 @@
                     </li> -->
                 </ul>
             </div>
-            <div class="row g-3">
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3 youtube">
+            <div class="row g-3 mb-5" v-for="data in matchData">
+                <h4 class="mb-0">{{data.week}}</h4>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 youtube" v-for="match in data.matchList">
                     <div class="title">
-                        <h5 class="text-center">Liverpool vs Manchaster United</h5>
+                        <h5 class="text-center">{{match.home}} vs {{match.away}}</h5>
                     </div>
                     <div class="video">
-                        <iframe src="https://www.youtube.com/embed/THjNog15BPs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                        <iframe v-if="match.youtube !=''" :src="'https://www.youtube.com/embed/'+match.youtube" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 
                         </iframe>
+                        <div class="no-video" v-if="match.youtube == ''">
+                            <span>No Video Upload</span>
+                        </div>
+                        
+                    </div>
+                    <div class="detial">
+                        <span>{{match.home}} {{match.hGoal}} : {{match.aGoal}} {{match.away}}</span>
+                        
                     </div>
                 </div>
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3 youtube">
-                    <div class="title">
-                        <h5 class="text-center">Liverpool vs Manchaster United</h5>
-                    </div>
-                    <div class="video">
-                        <iframe src="https://www.youtube.com/embed/THjNog15BPs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-
-                        </iframe>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3 youtube">
-                    <div class="title">
-                        <h5 class="text-center">Liverpool vs Manchaster United</h5>
-                    </div>
-                    <div class="video">
-                        <iframe src="https://www.youtube.com/embed/THjNog15BPs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-
-                        </iframe>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3 youtube">
-                    <div class="title">
-                        <h5 class="text-center">Liverpool vs Manchaster United</h5>
-                    </div>
-                    <div class="video">
-                        <iframe src="https://www.youtube.com/embed/THjNog15BPs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-
-                        </iframe>
-                    </div>
-                </div>
-                
             </div>
         </div>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
-    <script src="assets/js/home.js?20220213-002"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="assets/js/home.js?20220215-001"></script>
 </body>
 </html>
