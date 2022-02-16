@@ -1,0 +1,117 @@
+.premier-league{
+    .banner{
+        position: relative;
+        img{
+            width: 100%;
+        }
+        .banner-text{
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%)!important;
+            color: white;
+            text-align: center;
+            img{
+                width: 35%;
+            }
+        }
+    }
+    .video-section {
+        .header{
+            img{
+                width: 35px;
+            }
+        }
+        .match-data{
+            .week{
+                color: #666;
+            }
+            .youtube{
+                .video{
+                    > iframe{
+                        display: block;
+                        margin: auto;
+                        max-width: 100%;
+                        height: 169px;
+                    }
+                    .no-video {
+                        display: flex;
+                        height: 169px;
+                        border: 1px solid #ccc;
+                        span{
+                            display: block;
+                            width: 100%;
+                            align-self: center;
+                            text-align: center;
+                        }
+                    }
+                }
+                .detail-info{
+                    .dropdown{
+                        img{
+                            width: 30px;
+                        }
+                        .team{
+                            cursor: pointer;
+                        }
+                        .player-info{
+                            .name{
+                                .home,.away{
+                                    flex: fit-content;
+                                }
+                                .vs{
+                                    flex: 0 0 10px;
+                                }
+                            }
+                         }
+                         .player-info{
+                             width: 16em;
+                         }
+                    }
+                }
+            }
+        }
+        
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .premier-league{
+        .banner{
+            .banner-text{
+                img{
+                    width: 35%;
+                }
+                h1{
+                    font-size: 1em;
+                }
+
+            }
+        }
+        .video-section {
+            .youtube{
+                .video{
+                    > iframe{
+                        width: 100%;
+                        height: 232px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (min-width: 577px) and (max-width: 768px) {
+    .premier-league{
+        .banner{
+            .banner-text{
+                img{
+                    width: 35%;
+                }
+                h1{
+                    font-size: 1.5em;
+                }
+
+            }
+        }
+    }
+}

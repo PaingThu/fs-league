@@ -2,7 +2,8 @@ var app = new Vue({
     el: '#app',
     data: {
       message: 'Hello Vue!',
-      matchData : []
+      matchData : [],
+      playerInfo: "d-none"
     },
     methods: {
         getMatches: function(){
@@ -22,19 +23,24 @@ var app = new Vue({
           data.sort(function(a,b){
             return b[6]-a[6]
           }).map(e => {
-            console.log("WEeekkkkkkkk ", e[6])
+            var hPlayer = player[e[0].trim()]
+            var hPlayerId = playerId[hPlayer]
+            var aPlayer = player[e[3].trim()]
+            var aPlayerId = playerId[aPlayer]
+            console.log("Home Player ",hPlayer)
+            console.log("Home Player ",aPlayer)
             if(tmpWeek == e[6]){
-              tmpObjArr.push({home:e[0],hGoal:e[1],aGoal:e[2],away:e[3],playDate:e[4],youtube:e[5]?e[5].split('/')[3]:""})
+              tmpObjArr.push({home:e[0],hGoal:e[1],aGoal:e[2],away:e[3],playDate:e[4],youtube:e[5]?e[5].split('/')[3]:"",homePlayer:hPlayer,homePlayerId:hPlayerId,awayPlayer:aPlayer, awayPlayerId:aPlayerId})
             }else if(tmpWeek == ""){
               tmpWeek = e[6]
               oldTmpWeek = e[6]
-              tmpObjArr.push({home:e[0],hGoal:e[1],aGoal:e[2],away:e[3],playDate:e[4],youtube:e[5]?e[5].split('/')[3]:""})
+              tmpObjArr.push({home:e[0],hGoal:e[1],aGoal:e[2],away:e[3],playDate:e[4],youtube:e[5]?e[5].split('/')[3]:"",homePlayer:hPlayer,homePlayerId:hPlayerId,awayPlayer:aPlayer, awayPlayerId:aPlayerId})
             }else{
               tmpWeekList.push({week:"Week-"+oldTmpWeek,matchList:tmpObjArr}) 
               tmpWeek = e[6]
               oldTmpWeek = e[6]
               tmpObjArr = []
-              tmpObjArr.push({home:e[0],hGoal:e[1],aGoal:e[2],away:e[3],playDate:e[4],youtube:e[5]?e[5].split('/')[3]:""})
+              tmpObjArr.push({home:e[0],hGoal:e[1],aGoal:e[2],away:e[3],playDate:e[4],youtube:e[5]?e[5].split('/')[3]:"",homePlayer:hPlayer,homePlayerId:hPlayerId,awayPlayer:aPlayer, awayPlayerId:aPlayerId})
             }
           })
           tmpWeekList.push({week:"Week-"+oldTmpWeek,matchList:tmpObjArr}) 

@@ -1,48 +1,45 @@
 .header {
-  background: #d701f9;
+  border-bottom: 1px solid #ccc;
 }
 
-.header .navbar a {
-  color: white;
+.premier-league .banner {
+  position: relative;
 }
 
-.home .banner {
-  background-image: url(../img/banner.jpg?20220212-001);
-  background-repeat: no-repeat;
-  background-size: contain;
-  height: 626px;
+.premier-league .banner img {
+  width: 100%;
 }
 
-.home .banner .banner-text {
+.premier-league .banner .banner-text {
   position: absolute;
-  top: 65%;
+  bottom: 0;
   left: 50%;
-  -webkit-transform: translateX(-50%) translateY(-50%) !important;
-          transform: translateX(-50%) translateY(-50%) !important;
+  -webkit-transform: translateX(-50%) !important;
+          transform: translateX(-50%) !important;
   color: white;
   text-align: center;
 }
 
-.home .banner .banner-text img {
-  width: 300px;
+.premier-league .banner .banner-text img {
+  width: 35%;
 }
 
-.home .video-section .tab .nav .nav-item .nav-link {
-  cursor: pointer;
-}
-
-.home .video-section .tab .nav .nav-item .nav-link img {
+.premier-league .video-section .header img {
   width: 35px;
 }
 
-.home .video-section .youtube .video > iframe {
+.premier-league .video-section .match-data .week {
+  color: #666;
+}
+
+.premier-league .video-section .match-data .youtube .video > iframe {
   display: block;
   margin: auto;
   max-width: 100%;
   height: 169px;
 }
 
-.home .video-section .youtube .video .no-video {
+.premier-league .video-section .match-data .youtube .video .no-video {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -50,12 +47,58 @@
   border: 1px solid #ccc;
 }
 
-.home .video-section .youtube .video .no-video span {
+.premier-league .video-section .match-data .youtube .video .no-video span {
   display: block;
   width: 100%;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
   text-align: center;
+}
+
+.premier-league .video-section .match-data .youtube .detail-info .dropdown img {
+  width: 30px;
+}
+
+.premier-league .video-section .match-data .youtube .detail-info .dropdown .team {
+  cursor: pointer;
+}
+
+.premier-league .video-section .match-data .youtube .detail-info .dropdown .player-info .name .home, .premier-league .video-section .match-data .youtube .detail-info .dropdown .player-info .name .away {
+  -webkit-box-flex: fit-content;
+      -ms-flex: fit-content;
+          flex: fit-content;
+}
+
+.premier-league .video-section .match-data .youtube .detail-info .dropdown .player-info .name .vs {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 10px;
+          flex: 0 0 10px;
+}
+
+.premier-league .video-section .match-data .youtube .detail-info .dropdown .player-info {
+  width: 16em;
+}
+
+@media screen and (max-width: 576px) {
+  .premier-league .banner .banner-text img {
+    width: 35%;
+  }
+  .premier-league .banner .banner-text h1 {
+    font-size: 1em;
+  }
+  .premier-league .video-section .youtube .video > iframe {
+    width: 100%;
+    height: 232px;
+  }
+}
+
+@media screen and (min-width: 577px) and (max-width: 768px) {
+  .premier-league .banner .banner-text img {
+    width: 35%;
+  }
+  .premier-league .banner .banner-text h1 {
+    font-size: 1.5em;
+  }
 }
 /*# sourceMappingURL=style.css.map */
