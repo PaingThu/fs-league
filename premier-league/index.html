@@ -22,11 +22,41 @@
             </div>
         </div>
         <div class="container video-section py-3">
-            <div class="header mb-5 py-3">
+            <div class="header mb-3 py-3">
                 <img src="../assets/img/premier-league.png" alt="">
                             Premier League
             </div>
+            <!-- SEARCH -->
+            <div class="row mb-3 search">
+                <div class="col search-week">
+                    <label for="searchByWeek">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-week" viewBox="0 0 16 16">
+                            <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
+                            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+                          </svg>
+                    </label>
+                    <select name="" id="searchByWeek" class="form-select mt-2" v-model="keyWordByWeek" @change="search">
+                        <option value="">Select</option>
+                        <option v-if="index < 15" :value="index+1" v-for="(w,index) in premierLeagueData">Week {{index + 1}}</option>
+                    </select>
+                </div>
+                <div class="col search-team">
+                    <label for="searchByTeam">Team</label>
+                    <select name="" id="searchByTeam" class="form-select" v-model="keyWordByTeam" @change="search">
+                        <option value="">Select</option>
+                        <option :value="info.team" v-for="info in premierLeagueData">{{info.team}}</option>
+                    </select>
+                </div>
+                <div class="col search-player">
+                    <label for="searchByPlayer">Player</label>
+                    <select name="" id="searchByPlayer" class="form-select" v-model="keyWordByPlayer" @change="search">
+                        <option value="">Select</option>
+                        <option :value="info.name" v-for="info in premierLeagueData">{{info.name}}</option>
+                    </select>
+                </div>
+            </div>
             
+            <!-- MATCH -->
             <div class="row g-3 mb-5 px-3 match-data" v-for="data in matchData">
                 <h4 class="mb-0 week">{{data.week}}</h4>
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 youtube" v-for="match in data.matchList">
@@ -53,8 +83,6 @@
                                         <td><small>{{match.awayPlayer}}</small></td>
                                     </tr>
                                 </table>
-                                
-                                
                             </div>
                         </span>
                         
@@ -66,7 +94,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="../assets/js/variable.js"></script>
-    <script src="../assets/js/premier-league.js?20220215-001"></script>
+    <script src="../assets/js/variable.js?20220220-001"></script>
+    <script src="../assets/js/premier-league.js?20220220-001"></script>
 </body>
 </html>
