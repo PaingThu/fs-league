@@ -15,40 +15,44 @@ var app = new Vue({
         },
         configureMatchData: function(data){
             console.log("Data ", data)
+            this.matchData = []
             var tmpWeekList = []
             var tmpWeek = ""
             var oldTmpWeek = ""
             var tmpObjArr = []
-            data.sort(function(a,b){
-                return b[6]-a[6]
-            }).map(e => {
-                // console.log("The value of e : ",e)
-                var hIndex = premierLeagueData.findIndex(pInfo => pInfo.team == e[0].trim())
-                var aIndex = premierLeagueData.findIndex(pInfo => pInfo.team == e[3].trim())
-                console.log("hhhh ",premierLeagueData[hIndex].name)
-                console.log("index ",hIndex)
-                var hPlayer = premierLeagueData[hIndex].name
-                var hPlayerId = premierLeagueData[hIndex].id
-                var aPlayer = premierLeagueData[aIndex].name
-                var aPlayerId = premierLeagueData[aIndex].id
-                // console.log("Home Player ",hPlayer)
-                // console.log("Home Player ",aPlayer)
-                if(tmpWeek == e[6]){
-                tmpObjArr.push({home:e[0],hGoal:e[1],aGoal:e[2],away:e[3],playDate:e[4],youtube:e[5]?e[5].split('/')[3]:"",homePlayer:hPlayer,homePlayerId:hPlayerId,awayPlayer:aPlayer, awayPlayerId:aPlayerId})
-                }else if(tmpWeek == ""){
-                tmpWeek = e[6]
-                oldTmpWeek = e[6]
-                tmpObjArr.push({home:e[0],hGoal:e[1],aGoal:e[2],away:e[3],playDate:e[4],youtube:e[5]?e[5].split('/')[3]:"",homePlayer:hPlayer,homePlayerId:hPlayerId,awayPlayer:aPlayer, awayPlayerId:aPlayerId})
-                }else{
+            if(data.length){
+                data.sort(function(a,b){
+                    return b[6]-a[6]
+                }).map(e => {
+                    // console.log("The value of e : ",e)
+                    var hIndex = premierLeagueData.findIndex(pInfo => pInfo.team == e[0].trim())
+                    var aIndex = premierLeagueData.findIndex(pInfo => pInfo.team == e[3].trim())
+                    console.log("hhhh ",premierLeagueData[hIndex].name)
+                    console.log("index ",hIndex)
+                    var hPlayer = premierLeagueData[hIndex].name
+                    var hPlayerId = premierLeagueData[hIndex].id
+                    var aPlayer = premierLeagueData[aIndex].name
+                    var aPlayerId = premierLeagueData[aIndex].id
+                    // console.log("Home Player ",hPlayer)
+                    // console.log("Home Player ",aPlayer)
+                    if(tmpWeek == e[6]){
+                    tmpObjArr.push({home:e[0],hGoal:e[1],aGoal:e[2],away:e[3],playDate:e[4],youtube:e[5]?e[5].split('/')[3]:"",homePlayer:hPlayer,homePlayerId:hPlayerId,awayPlayer:aPlayer, awayPlayerId:aPlayerId})
+                    }else if(tmpWeek == ""){
+                    tmpWeek = e[6]
+                    oldTmpWeek = e[6]
+                    tmpObjArr.push({home:e[0],hGoal:e[1],aGoal:e[2],away:e[3],playDate:e[4],youtube:e[5]?e[5].split('/')[3]:"",homePlayer:hPlayer,homePlayerId:hPlayerId,awayPlayer:aPlayer, awayPlayerId:aPlayerId})
+                    }else{
+                    tmpWeekList.push({week:"Week-"+oldTmpWeek,matchList:tmpObjArr}) 
+                    tmpWeek = e[6]
+                    oldTmpWeek = e[6]
+                    tmpObjArr = []
+                    tmpObjArr.push({home:e[0],hGoal:e[1],aGoal:e[2],away:e[3],playDate:e[4],youtube:e[5]?e[5].split('/')[3]:"",homePlayer:hPlayer,homePlayerId:hPlayerId,awayPlayer:aPlayer, awayPlayerId:aPlayerId})
+                    }
+                })
                 tmpWeekList.push({week:"Week-"+oldTmpWeek,matchList:tmpObjArr}) 
-                tmpWeek = e[6]
-                oldTmpWeek = e[6]
-                tmpObjArr = []
-                tmpObjArr.push({home:e[0],hGoal:e[1],aGoal:e[2],away:e[3],playDate:e[4],youtube:e[5]?e[5].split('/')[3]:"",homePlayer:hPlayer,homePlayerId:hPlayerId,awayPlayer:aPlayer, awayPlayerId:aPlayerId})
-                }
-            })
-            tmpWeekList.push({week:"Week-"+oldTmpWeek,matchList:tmpObjArr}) 
-            this.matchData = tmpWeekList
+                this.matchData = tmpWeekList
+            }
+            
         },
         search: async function(){
             // console.log("Select",e.target.id)

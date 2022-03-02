@@ -16,3 +16,18 @@ var premierLeagueData = [
     {name : "Htet Aung Kyaw", team : "Man City", id : "hak21105"},
     {name : "Nyan Linn Aung", team : "Aston Villa", id : "nla2308"},
 ]
+
+var searchDataTeam = premierLeagueData.slice();
+searchDataTeam = searchDataTeam.sort(function (a, b) {
+    if(a.team < b.team) { return -1; }
+    if(a.team > b.team) { return 1; }
+    return 0
+});
+
+
+var searchDataPlayer = premierLeagueData.slice();
+searchDataPlayer = searchDataPlayer.sort(function (a, b) {
+    if(a.name < b.name) { return -1; }
+    if(a.name > b.name) { return 1; }
+    return 0
+});
